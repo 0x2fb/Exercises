@@ -1,0 +1,15 @@
+foods = ('zucchini', 'tomatoes', 'broccoli', 'corn', 'beans')
+
+beverages = ('water', 'milk', 'coffee', 'tea', 'beer')
+
+print(foods[0] == 'zucchini')
+print(foods[0] == foods[0].upper())
+print(4 == 4)
+print(3 > 5)
+print(3 < 5)
+print(2 >= 2)
+print(1 <= 5)
+print('zucchini' in foods and 'zucchini' in beverages)
+print('zucchini' in foods or 'zucchini' in beverages)
+print('rice' in foods)
+print('rice' not in foods)

@@ -13,8 +13,7 @@ album = {
 
 track_titles = list(map(lambda x: x[1], album['tracks']))
 print(track_titles)
-for x in album['tracks']:
-    print(x[1])
 
-tracks = [x[1] for x in album['tracks']]
-print(tracks)
+print('Tracks with only one word:\n')
+one_word_tracks = list(filter(lambda x: ' ' not in x[1], album['tracks']))
+print(one_word_tracks)

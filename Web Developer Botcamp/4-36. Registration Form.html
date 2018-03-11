@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Register</title>
+</head>
+<h1>Register</h1>
+<form>
+    <p>
+        <label for="first">First Name: </label>
+        <input type="text" name="first" id='first' placeholder="John" required>
+        <label for="last">Last Name: </label>
+        <input type="text" name="last" id='last' placeholder="Smith" required>
+    </p>
+    <p>
+        <label for="gender">Male: </label>
+        <input type="radio" name="gender" value='male'>
+        <label for="gender">Female: </label>
+        <input type="radio" name="gender" value='female'>
+        <label for="gender">Other: </label>
+        <input type="radio" name="gender" value='other'>
+        <p>
+            <p>
+                <label for="email">Email: </label>
+                <input type="email" name="email" id='email' placeholder="Email" required>
+                <label for="password">Password: </label>
+                <input type="password" name="password" id='password' placeholder="Password" minlength='5' maxlength='8' required>
+            </p>
+            <p>
+                <label for="birthday">Birthday: </label>
+                <select name="month" id="birthday">
+                    <option value="mm">Month</option>
+                </select>
+                <select name="day" id="birthday">
+                    <option value="dd">Day</option>
+                </select>
+                <select name="year" id="birthday">
+                    <option value="yyyy">Year</option>
+                </select>
+            </p>
+            <p>
+                <label for="chechbox"></label> I agree to the terms and conditions
+                <input type="checkbox" name="checkox" id="checkbox">
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+
+</form>
+
+<body>
+
+</body>
+
+</html>

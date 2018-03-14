@@ -22,6 +22,10 @@ class Deck:
     def __repr__(self):
         return f'There are {self.count()} in the deck.'
 
+    def __iter__(self):
+        for card in self.cards:
+            yield card
+
     def count(self):
         return len(self.cards)
 
@@ -52,3 +56,5 @@ print(test_deck.cards)
 print(test_deck.deal_card())
 print(test_deck.deal_hand(5))
 test_deck.count()
+for card in test_deck:
+    print(card)

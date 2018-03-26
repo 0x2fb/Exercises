@@ -1,0 +1,14 @@
+h1 {
+	color: rgba(0,200,100, 0.8);
+	/*border-color: purple;*/
+	/*border-width: 5px;*/
+	/*border-style: solid;*/
+	border: 2px solid rgb(255,100,80);
+}
+h4 {
+    background: rgb(255,100,80);
+}
+body {background: pink
+   /* background: url(https://cdn.pixabay.com/photo/2016/09/09/16/19/seamless-1657450_960_720.jpg);*/
+
+}

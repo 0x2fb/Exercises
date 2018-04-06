@@ -1,0 +1,26 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Carcassonne_Miples.jpg/1280px-Carcassonne_Miples.jpg");
+    /* Júlio Reis (User:Tintazul) (https://commons.wikimedia.org/wiki/File:Carcassonne_Miples.jpg), „Carcassonne Miples“, https://creativecommons.org/licenses/by-sa/2.5/legalcode  */
+    background-size: cover;
+    background-position: center;
+    color:white;
+}
+html {
+    height:100%;
+}
+#content {text-align: center;
+    padding-top: 35%;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+    0px 8px 13px rgba(0,0,0,0.1),
+    0px 18px 23px rgba(0,0,0,0.1);
+}
+h1 {
+    font-weight: 700;
+    font-size: 5em
+}
+hr {
+    width: 350px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}

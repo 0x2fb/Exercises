@@ -4,19 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Scorekeeper</title>
+    <style>
+        .winner {
+            color: green;
+        }
+    </style>
 </head>
 
 <body>
     <h1>
-        <span id='scorep1'>0</span> to
-        <span id='scorep2'>0</span>
+        <span id='p1display'>0</span> to
+        <span id='p2display'>0</span>
     </h1>
     <p>Playing to:
-        <span id='matches'>5</span>
+        <span id='matchdisplay'>5</span>
     </p>
-    <input type="number" id='number' value="5">
-    <button id='btnp1'>Player One</button>
-    <button id='btnp2'>Player Two</button>
+    <input type="number" id='winningscore' value="5">
+    <button id='p1button'>Player One</button>
+    <button id='p2button'>Player Two</button>
     <button id='reset'>Reset</button>
     <script src="14-160. scorekeeper.js"></script>
 </body>

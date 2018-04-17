@@ -4,27 +4,11 @@ body {
     font-family: 'Montserrat';
 }
 
-h1 {
-    color: white;
-    font-weight: normal;
-    text-transform: uppercase;
-    text-align: center;
-    background-color: steelblue;
-    margin: 0;
-    line-height: 1.1;
-    padding: 20px 0;
-}
-
-#container {
-    max-width: 600px;
-    margin: 20px auto;
-}
-
 .square {
     width: 30%;
+    background-color: purple;
     padding-bottom: 30%;
     float: left;
-    background-color: purple;
     margin: 1.66%;
     border-radius: 15%;
     transition: background-color 0.3s;
@@ -32,13 +16,39 @@ h1 {
     --moz-transition: background-color 0.3s;
 }
 
+#container {
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+h1 {
+    text-align: center;
+    line-height: 1.1;
+    font-weight: normal;
+    color: white;
+    background-color: steelblue;
+    margin: 0;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+
 #colorDisplay {
     font-size: 200%;
 }
 
+#message {
+    display: inline-block;
+    width: 10%;
+    text-transform: uppercase;
+    color: steelblue;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: inherit;
+}
+
 #stripe {
     background-color: white;
-    height: 30ps;
+    height: 30px;
     text-align: center;
     color: steelblue;
 }
@@ -61,17 +71,6 @@ button {
     --webkit-transition: all 0.3s;
     --moz-transition: all 0.3s;
     outline: none;
-}
-
-#message {
-    display: inline-block;
-    height: 100%;
-    text-transform: uppercase;
-    color: steelblue;
-    font-weight: 800;
-    letter-spacing: 1px;
-    font-size: inherit;
-    width: 20%;
 }
 
 button:hover {

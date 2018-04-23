@@ -1,3 +1,6 @@
+import os
+
+
 def get_symbols():
     while True:
         player1 = input(
@@ -30,6 +33,10 @@ def win_condition(dc):
     return False
 
 
+def is_tie(dc):
+    return all((i != " " for i in dc.values()))
+
+
 def enter_symbol(p, dc):
 
     def validation(keypress):
@@ -53,6 +60,7 @@ def enter_symbol(p, dc):
 
 
 def print_field(dc):
+    os.system('cls')
     em = "   |   |   \n"
     spacer = "___|___|___\n"
     row1 = f' {dc["7"]} | {dc["8"]} | {dc["9"]} \n'
@@ -63,23 +71,53 @@ def print_field(dc):
     print(field, end='')
 
 
+def play(dc):
+    player1, player2, active_player = get_symbols()
+    while True:
+        print_field(dc)
+        dc = enter_symbol(active_player, dc)
+        if win_condition(dc):
+            if active_player == player1:
+                print_field(dc)
+                print("Player 1 wins!")
+            else:
+                print_field(dc)
+                print("Player 2 wins!")
+            break
+        if is_tie(dc):
+            print_field(dc)
+            print("It's a tie!")
+            break
+        if active_player == player1:
+            print("Your turn, Player 2")
+            active_player = player2
+        else:
+            print("Your turn, Player 1")
+            active_player = player1
+
+
+def play_again():
+    while True:
+        answer = input("Do you want to play again? ")
+        if answer[0].lower() == "y":
+            return True
+        elif answer[0].lower() == "n":
+            return False
+        else:
+            print("Yes or No?")
+
+
+def reset_game(dc):
+    return
+
+
 dc = {"1": " ", "2": " ", "3": " ", "4": " ",
       "5": " ", "6": " ", "7": " ", "8": " ", "9": " "}
 
-player1, player2, active_player = get_symbols()
-print_field(dc)
 while True:
-    dc = enter_symbol(active_player, dc)
-    print_field(dc)
-    if win_condition(dc):
-        if active_player == player1:
-            print("Player 1 wins!")
-        else:
-            print("Player 2 wins!")
+    play(dc)
+    if not play_again():
         break
-    if active_player == player1:
-        print("Your turn, Player 2")
-        active_player = player2
     else:
-        print("Your turn, Player 1")
-        active_player = player1
+        # Reset the game
+        dc = dc.fromkeys([str(i) for i in range(1, 10)], " ")

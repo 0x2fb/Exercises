@@ -15,13 +15,12 @@ except ZeroDivisionError:
 
 def ask():
     while True:
-        a = input("Please enter an integer ")
-        if a == "q":
-            break
         try:
-            print(a ** 2)
-        except TypeError:
+            a = int(input("Please enter an integer "))
+        except ValueError:
             print("Invalid input")
+            continue
+        print(a ** 2)
 
 
 ask()

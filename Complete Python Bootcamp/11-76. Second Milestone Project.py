@@ -1,60 +1,44 @@
 import random
 
+suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
+ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
+         'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
+values = {'Two': 2, 'Three': 3, 'Four': 4, 'Five': 5, 'Six': 6, 'Seven': 7, 'Eight': 8, 'Nine': 9, 'Ten': 10, 'Jack': 10,
+          'Queen': 10, 'King': 10, 'Ace': 11}
+playing = True
+
 
 class Card:
 
-    def __init__(self, suit, value):
+    def __init__(self, suit, rank):
         self.suit = suit
-        self.value = value
-        self.points = self.get_points(value)
+        self.rank = rank
 
-    def __repr__(self):
-        return f'{self.value} of {self.suit}'
-
-    def get_points(self, value):
-        p_cards = ['J', 'Q', 'K']
-        try:
-            v = int(value)
-        except ValueError:
-            if value in p_cards:
-                v = 10
-            elif value == "A":
-                v = 11
-        return v
+    def __str__(self):
+        return self.rank + ' of ' + self.suit
 
 
 class Deck:
 
-    suits = ('Hearts', 'Diamonds', 'Clubs', 'Spaces')
-    values = ('A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K')
-
     def __init__(self):
-        self.cards = [Card(i, j) for j in Deck.values for i in Deck.suits]
+        self.deck = []  # start with an empty list
+        for suit in suits:
+            for rank in ranks:
+                self.deck.append(Card(suit, rank))
 
-    def __repr__(self):
-        return f'There are {self.count()} in the deck.'
-
-    def __iter__(self):
-        for card in self.cards:
-            yield card
-
-    def count(self):
-        return len(self.cards)
-
-    def _deal(self, rem_cards):
-        if rem_cards <= self.count():
-            return [self.cards.pop() for n in range(rem_cards)]
-        else:
-            raise ValueError("Not enough cards left.")
+    def __str__(self):
+        deck_comp = ''
+        for card in self.deck:
+            deck_comp += '\n' + card.__str__()
+        return 'Cards in the deck:' + deck_comp
 
     def shuffle(self):
-        if self.count() == 52:
-            random.shuffle(self.cards)
-        else:
-            raise ValueError('Only full decks can be shuffled.')
+        random.shuffle(self.deck)
 
-    def deal_card(self):
-        return self._deal(1)[0]
+    def deal(self):
+        return self.deck.pop()
 
-    def deal_hand(self, number):
-        return self._deal(number)
+
+test_deck = Deck()
+test_deck.shuffle()
+print(test_deck)

@@ -55,3 +55,66 @@ class Hand:
         while self.value > 21 and self.aces:
             self.value -= 10
             self.aces -= 1
+
+
+def hit(deck, hand):
+    hand.add_card(deck.deal())
+    hand.adjust_for_ace()
+
+
+def hit_or_stand(deck, hand):
+    global playing  # to control an upcoming while loop
+
+    while True:
+        x = input('Hit or Stand? Enter h or s ')
+        if x[0].lower() == 'h':
+            hit(deck, hand)
+        elif x[0].lower() == 's':
+            print("Player stands Dealer's Turn")
+            playing = False
+        else:
+            print('Invalid input. Enter h or s only, please.')
+            continue
+        break
+
+
+def show_some(player, dealer):
+
+    print("DEALERS HAND:")
+    print('one card hidden!')
+    print(dealer.cards[1])
+    print('\n')
+    print("PLAYER's HAND:")
+    for card in player.cards:
+        print(card)
+
+
+def show_all(player, dealer):
+
+    print("DEALER's HAND: ")
+    for card in dealer.cards:
+        print(card)
+    print('\n')
+    print("PLAYER's HAND:")
+    for card in player.cards:
+        print(card)
+
+
+def player_busts(player, dealer):
+    print("BUST PLAYER")
+
+
+def player_wins(player, dealer):
+    print("PLAYER WINS")
+
+
+def dealer_busts(player, dealer):
+    print("PLAYER WINS! DEALER BUSTED!")
+
+
+def dealer_wins(player, dealer):
+    print("DEALER WINS! PLAYER BUSTED!")
+
+
+def tie(player, dealer):
+    print("DEALER AND PLAYER TIE! ")

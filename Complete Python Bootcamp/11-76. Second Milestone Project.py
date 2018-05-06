@@ -63,23 +63,23 @@ def hit(deck, hand):
 
 
 def hit_or_stand(deck, hand):
-    global playing  # to control an upcoming while loop
+    global playing
 
     while True:
-        x = input('Hit or Stand? Enter h or s ')
+        x = input("Would you like to Hit or Stand? Enter 'h' or 's' ")
         if x[0].lower() == 'h':
             hit(deck, hand)
         elif x[0].lower() == 's':
-            print("Player stands Dealer's Turn")
+            print("Player stands. Dealer is playing.")
             playing = False
         else:
-            print('Invalid input. Enter h or s only, please.')
+            print("Sorry, please try again.")
             continue
         break
 
 
 def show_some(player, dealer):
-
+    print("-" * 50)
     print("DEALERS HAND:")
     print('one card hidden!')
     print(dealer.cards[1])
@@ -87,10 +87,11 @@ def show_some(player, dealer):
     print("PLAYER's HAND:")
     for card in player.cards:
         print(card)
+    print("-" * 50)
 
 
 def show_all(player, dealer):
-
+    print("-" * 50)
     print("DEALER's HAND: ")
     for card in dealer.cards:
         print(card)
@@ -98,23 +99,42 @@ def show_all(player, dealer):
     print("PLAYER's HAND:")
     for card in player.cards:
         print(card)
+    print("-" * 50)
 
 
-def player_busts(player, dealer):
-    print("BUST PLAYER")
-
-
-def player_wins(player, dealer):
-    print("PLAYER WINS")
-
-
-def dealer_busts(player, dealer):
-    print("PLAYER WINS! DEALER BUSTED!")
-
-
-def dealer_wins(player, dealer):
-    print("DEALER WINS! PLAYER BUSTED!")
-
-
-def tie(player, dealer):
-    print("DEALER AND PLAYER TIE! ")
+while True:
+    print('WELCOME TO BLACKJACK')
+    deck = Deck()
+    deck.shuffle()
+    player_hand = Hand()
+    player_hand.add_card(deck.deal())
+    player_hand.add_card(deck.deal())
+    dealer_hand = Hand()
+    dealer_hand.add_card(deck.deal())
+    dealer_hand.add_card(deck.deal())
+    show_some(player_hand, dealer_hand)
+    while playing:
+        hit_or_stand(deck, player_hand)
+        show_some(player_hand, dealer_hand)
+        if player_hand.value > 21:
+            print("Player busts. Dealer wins!")
+            break
+    if player_hand.value <= 21:
+        while dealer_hand.value < 17:
+            hit(deck, dealer_hand)
+        show_all(player_hand, dealer_hand)
+        if dealer_hand.value > 21:
+            print("Dealer busts. Player wins!")
+        elif dealer_hand.value > player_hand.value:
+            print("Dealer wins!")
+        elif player_hand.value > dealer_hand.value:
+            print("Player wins!")
+        else:
+            print("Player and Dealer tie!")
+    new_game = input("Would you like to play again?")
+    if new_game[0].lower() == 'y':
+        playing = True
+        continue
+    else:
+        print("Thank you for playing!")
+        break

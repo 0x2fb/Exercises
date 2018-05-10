@@ -7,11 +7,22 @@
     <script type="text/javascript" src="19-202. assets\lib\paper-full.js"></script>
     <link rel="stylesheet" href="19-202. assets\css\circles.css">
     <script type="text/paperscript" canvas="myCanvas">
+        var circles = [];
         function onKeyDown(event) {
             var maxPoint = new Point(view.size.width, view.size.height);
             var randomPoint = Point.random();
             var point = maxPoint * randomPoint
-            new Path.Circle(point, 10).fillColor='orange';} </script>
+            var newCircle = new Path.Circle(point, 500)
+            newCircle.fillColor ='orange';
+            circles.push(newCircle);
+        } 
+        function onFrame(event) {
+        for (var i = 0; i < circles.length; i++) {
+            circles[i].fillColor.hue += 1;
+            circles[i].scale(.9);
+        }
+    }
+    </script>
 </head>
 
 <body>

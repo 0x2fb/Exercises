@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Circles</title>
-    <script type="text/javascript" src="19-202. assets\lib\paper-full.js"></script>
+    <script type="text/javascript" src="19-202. assets\js\lib\paper-full.js"></script>
+    <script type="text/javascript" src="19-202. assets\js\lib\howler.js"></script>
+    <script type="text/javascript" src="19-202. assets\js\data.js"></script>
     <link rel="stylesheet" href="19-202. assets\css\circles.css">
     <script type="text/paperscript" canvas="myCanvas">
         var circles = [];
         function onKeyDown(event) {
+            
             var maxPoint = new Point(view.size.width, view.size.height);
             var randomPoint = Point.random();
-            var point = maxPoint * randomPoint
-            var newCircle = new Path.Circle(point, 500)
-            newCircle.fillColor ='orange';
+            var point = maxPoint * randomPoint;
+            var newCircle = new Path.Circle(point, 500);
+            newCircle.fillColor = keyData[event.key].color;
             circles.push(newCircle);
+            keyData[event.key].sound.play();
+            
         } 
         function onFrame(event) {
         for (var i = 0; i < circles.length; i++) {
